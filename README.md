@@ -1,1 +1,5 @@
 # Thesis
+
+
+Let’s Go is a mobile application that will allow people to update and view how crowded restaurants, movie theaters, and any other place that people commonly go to before they leave their house. In hope that if a place is very crowded you will either pick a different time to go there, or go somewhere else all together that would fit in with what you wanted to do. This app will hopefully allow its users to use their time a little more wisely than to waste it waiting in lines everyday. This app will be updated and monitored by the people who are using it, to make sure the data being presented is as accurate as possible.
+However due to many complications throughout the year my project is not going to be an app for Android or Iphone just yet. For this showcase I have made my project as a website that has similar functionality and hopefully with help from a prospective team, we will be able to create an app for both Android and Iphone. 

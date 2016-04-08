@@ -8,6 +8,63 @@ li{
 	min-width: 40px;
 }
 
+#findLocation {
+    left: auto;
+    right: auto;
+    margin-right:auto;
+    margin-left:auto;
+    position: relative;
+    display: block;
+    font-size: 21px;
+    text-align: center;
+    height: 60px;
+    width: 210px;
+
+}
+
+.button1 {
+    padding-top: 50px;
+}
+
+#findLocation:hover {
+        
+}
+
+#FavoritePlaces {
+    left: auto;
+    right: auto;
+    margin-right:auto;
+    margin-left:auto;
+    position: relative;
+    display: block;
+    font-size: 21px;
+	height: 60px;
+    width: 210px;
+}
+
+.button2 {
+    padding: 50px 0px 50px 0px;
+}
+#AddNewLocation {
+    left: auto;
+    right: auto;
+    margin-right:auto;
+    margin-left:auto;
+    position: relative;
+    display: block;
+    font-size: 21px;
+    height: 60px;
+    width: 210px;
+}
+
+
+
+.loginSignup {
+    margin-left: 80%;
+    margin-right: auto;
+    display: block;
+    position: relative;
+}
 
 .navbar, .navbar-inverse {
     border-radius: 0;
@@ -24,9 +81,13 @@ li{
 .navbar-inverse .navbar-nav > li > a {
     color: #ffffff;
     font-family: Lato;
-    font-size: 1.7em;
-    font-weight: 300;
-    padding: 30px 25px 33px 25px;
+    font-size: 2em;
+    position: relative;
+    display: block;
+    margin: auto auto auto auto;
+    /* font-weight: 300;
+    padding: 30px 25px 33px 25px; */
+
 }
 
 .navbar-inverse .navbar-nav li a:hover {
@@ -75,19 +136,9 @@ a:focus {
  * 10.0 Header
  */
 
-.site-header {
-	background-color: #fff;
-	border-bottom: 1px solid rgba(51, 51, 51, 0.1);
-	padding: 7.6923%;
-}
 
 header{
-	position: fixed;
-	top:0;
-	left:0;
-	right:0;
-	padding: 1% 15%;
-	z-index: 9001;
+	position: relative;
 	background-color:  rgba(255,255,255,0.75);
 	overflow: hidden;
 	font-size: 0.75em;
@@ -107,66 +158,18 @@ header img:hover{
 }
 
 header .navigation {
-	float: right;
-	display: table;
-	padding: 20px;
+	float: left;
+	display: block;
+	padding: 0px 0px 0px 0px;
 }
 
-header .navigation .links{
-	  display: table-cell;
-	  vertical-align: middle;
-	  list-style-type: none;
- }
 
- header .navigation .links li{
- 	  list-style-type: none;
-	  display: inline;
-	  margin: 0px 20px;
-  }
 
-  header .navigation .links li.selected a{
-	 border-bottom: solid #F06365 1px;
-   }
-
-   header .navigation .links li.selected a:hover{
-     border-bottom-color: rgba(255,255,255,0.75);
-    }
 
    header .navigation .links li a{
    	padding: 2px 5px;
 	color : rgb(51,51,51);
-   	background: rgba(0,0,0,0);
    	position: relative;
-   	z-index: 9009;
-   	cursor: pointer;
-   }
-
-   header .navigation .links li a:before{
-   	content:"";
-   	position: absolute;
-	background: #F77FCC;
-   	z-index: -1;
-   	top: 0;
-   	bottom: 0;
-   	left: 0;
-   	right:0;
-   	-o-transition: all 0.3s ease-out;
-   	-moz-transition: all 0.3s ease-out;
-   	-webkit-transition: all 0.3s ease-out;
-       	transition: all 0.3s ease-out;
-   	transform: scaleY(0);
-   }
-
-   header .navigation .links li a:hover,
-    header .navigation .links li a:active,
-    header .navigation .links li a:focus{
-   	color: #fff;
-   }
-
-   header .navigation .links li a:hover:before,
-   header .navigation .links li a:active:before,
-   header .navigation .links li a:focus:before{
-   	transform: scaleY(1);
    }
 
    header #toggle{
@@ -174,6 +177,9 @@ header .navigation .links{
 	   opacity: 0;
    }
 
+
+
+/***************************** CSS For Mobile *****************************/
    @media (max-width: 820px) {
 	   header{
 		text-align: center;
@@ -232,6 +238,15 @@ header .navigation .links{
    	   color:#F76161;
       }
    }
+
+   .loginSignup {
+    margin-left: 55%;
+    margin-right: auto;
+    padding-right: 15px;
+    display: block;
+    position: relative;
+   
+}
 
 
 

@@ -1,0 +1,195 @@
+<?php
+
+// include configuration file
+include('../config.php');
+	
+// connect to the database
+$dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Could not connect to MySQL: ' . mysqli_connect_error());
+
+// continue session
+session_start();
+
+// if the form has been submitted
+if(isset($_POST['submit']))
+{
+	// create an empty error array
+	$error = array();
+
+	// check for a username
+		if(empty($_POST['UserName']))
+		{
+			$error['UserName'] = 'Required field';
+		} 
+
+	// check for a firstname
+	if(empty($_POST['FirstName']))
+	{
+		$error['FirstName'] = 'Required field';
+	} 
+	
+	// check for a lastname
+	if(empty($_POST['LastName']))
+	{
+		$error['LastName'] = 'Required field';
+	} 
+	
+	// check for a email
+	if(empty($_POST['Email']))
+	{
+		$error['Email'] = 'Required field';
+	} else {
+	
+		// check to see if email address is unique
+		$query = "select user_id from Login where email = '{$_POST['Email']}'";
+		$result = mysqli_query($dbc, $query);
+		if(mysqli_num_rows($result) > 0)
+		{
+			$error['Email'] = 'You already have an account';
+		}
+	}
+	
+	// check for a password
+	if(empty($_POST['Password']))
+	{
+		$error['Password'] = 'Required field';
+	} 
+	
+	// if there are no errors
+	if(sizeof($error) == 0)
+	{
+		// insert user into the users table
+		$query = "INSERT INTO Login (
+					user_id, 
+					UserName, 
+					Firstname, 
+					LastName, 
+					Email,
+					Password,
+					signupdate
+				) VALUES (
+					null,
+					'{$_POST['UserName']}',
+					'{$_POST['FirstName']}',
+					'{$_POST['LastName']}',
+					'{$_POST['Email']}',
+					sha1('{$_POST['Password']}'),
+					NOW()
+					)";
+		$result = mysqli_query($dbc, $query);
+		
+		// obtain user_id from table
+		$user_id = mysqli_insert_id($dbc);
+		//subject message
+		//$subject = "User Registration Activation Email";
+		// send a signup e-mail to user
+		$message = "Dear {$_POST['FirstName']} {$_POST['LastName']},\n";
+		$message = $message . "Thank you for signing up!\n";
+		mail($_POST['Email'], 'Sign up confirmation', $message, "From: letsgo.helpdesk@gmail.com");
+		
+		// append user_id to session array
+		$_SESSION['user_id'] = $user_id;
+		$_SESSION['firstname'] = $_POST['firstname'];
+		$_SESSION['lastname'] = $_POST['lastname'];
+		
+		// redirect user to profile page
+		header("Location: ../index.php");
+		exit();
+				
+	} 
+}
+
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		  	<title>Let's Go</title>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
+			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
+			  	crossorigin="anonymous"></script>
+	<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script> -->
+	 <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+		<link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
+		
+		<script type="text/javascript">
+		     
+			$(document).ready(function(e)
+			{
+				
+			$.backstretch("MainPageBackgroung.png");
+
+			});
+			
+		
+		</script>	
+		
+	</head>
+	<body>
+		
+		<!-- top navigation -->
+		<?php include('topnavigation.php'); ?>
+		
+		<!-- content -->	
+		<div class="container" style="margin-top: 65px">
+		
+			<h2>Sign up</h2>
+
+			<!-- signup form -->
+			<form method="post" action="signUp.php">
+				
+			<!-- user name -->
+				<div class="form-group">
+					<label>User Name</label>
+					<input name="UserName" type="text" value="<?php echo $_POST['UserName']; ?>" autocomplete="off" class="form-control" />
+					<span class="text-error"><?php echo $error['UserName']; ?></span>
+				</div>
+
+				<!-- first name -->
+				<div class="form-group">
+					<label>First Name</label>
+					<input name="FirstName" type="text" value="<?php echo $_POST['FirstName']; ?>" autocomplete="off" class="form-control" />
+					<span class="text-error"><?php echo $error['FirstName']; ?></span>
+				</div>
+							
+				<!-- last name -->
+				<div class="form-group">
+					<label>Last Name</label>
+					<input name="LastName" type="text" value="<?php echo $_POST['LastName']; ?>" autocomplete="off" class="form-control" />
+					<span class="text-error"><?php echo $error['LastName']; ?></span>
+				</div>
+				
+				<!-- e-mail -->
+				<div class="form-group">
+					<label>E-mail</label>
+					<input name="Email" type="text" value="<?php echo $_POST['Email']; ?>" autocomplete="off" class="form-control" />
+					<span class="text-error"><?php echo $error['Email']; ?></span>
+				</div>
+				
+				<!-- password -->
+				<div class="form-group">
+					<label>Password</label>
+					<input name="Password" type="password"  autocomplete="off" class="form-control" />
+					<span class="text-error"><?php echo $error['Password']; ?></span>
+				</div>
+				
+				<!-- submit button -->
+				<div class="form-group">
+					<input name="submit" type="submit" value="Sign up" class="btn btn-large btn-primary" />
+				</div>
+				
+			</form>
+			
+			<!-- sign in link -->
+			<p>Already have an account? <a href="signIn.php">Sign in</a>!</p>
+			
+		</div>
+	
+	</body>
+</html>

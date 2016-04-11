@@ -66,7 +66,7 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 
  <div class= "loginSignup">
 			<h4> 
-				<a href="signIn.php">Sign in</a> /
+				<a href="php/signIn.php">Sign in</a> /
 			    <a href="php/signUp.php">Sign up</a>
 			</h4>
 		

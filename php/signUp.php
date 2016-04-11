@@ -15,11 +15,7 @@ if(isset($_POST['submit']))
 	// create an empty error array
 	$error = array();
 
-	// check for a username
-		if(empty($_POST['UserName']))
-		{
-			$error['UserName'] = 'Required field';
-		} 
+	
 
 	// check for a firstname
 	if(empty($_POST['FirstName']))
@@ -40,13 +36,28 @@ if(isset($_POST['submit']))
 	} else {
 	
 		// check to see if email address is unique
-		$query = "select user_id from Login where email = '{$_POST['Email']}'";
+		$query = "select user_id from Login where Email = '{$_POST['Email']}'";
 		$result = mysqli_query($dbc, $query);
 		if(mysqli_num_rows($result) > 0)
 		{
 			$error['Email'] = 'You already have an account';
 		}
 	}
+
+	// check for a username
+		if(empty($_POST['UserName']))
+		{
+			$error['UserName'] = 'Required field';
+		} else{
+			//check to see if user name is already taken
+			$query = "select user_id from Login where UserName = '{$_POST['UserName']}'";
+			$result = mysqli_query($dbc, $query);
+			if(mysqli_num_rows($result) > 0){
+				$error['UserName'] = 'that user name already exists';
+
+			}
+
+		}
 	
 	// check for a password
 	if(empty($_POST['Password']))
@@ -61,7 +72,7 @@ if(isset($_POST['submit']))
 		$query = "INSERT INTO Login (
 					user_id, 
 					UserName, 
-					Firstname, 
+					FirstName, 
 					LastName, 
 					Email,
 					Password,
@@ -79,8 +90,6 @@ if(isset($_POST['submit']))
 		
 		// obtain user_id from table
 		$user_id = mysqli_insert_id($dbc);
-		//subject message
-		//$subject = "User Registration Activation Email";
 		// send a signup e-mail to user
 		$message = "Dear {$_POST['FirstName']} {$_POST['LastName']},\n";
 		$message = $message . "Thank you for signing up!\n";
@@ -88,11 +97,11 @@ if(isset($_POST['submit']))
 		
 		// append user_id to session array
 		$_SESSION['user_id'] = $user_id;
-		$_SESSION['firstname'] = $_POST['firstname'];
-		$_SESSION['lastname'] = $_POST['lastname'];
+		$_SESSION['FirstName'] = $_POST['FirstName'];
+		$_SESSION['LastName'] = $_POST['LastName'];
 		
 		// redirect user to profile page
-		header("Location: ../index.php");
+		header("Location: letsgo.php");
 		exit();
 				
 	} 
@@ -134,7 +143,24 @@ if(isset($_POST['submit']))
 	<body>
 		
 		<!-- top navigation -->
-		<?php include('topnavigation.php'); ?>
+		<!-- <?php include('topnavigation.php'); ?> -->
+		<div id="letsgo">
+		<h1> <a href="../index.php">Let's Go</a></h1>
+		</div>
+<header>
+ 
+		 <div class="navigation">
+			<ul class="links">
+				
+				<li><a href="Settings.php">Settings</a></li>
+				<li><a href="feedback.php">Feedback</a></li>
+			</ul>
+		</div>
+ 
+ <div id="toggle" onclick="toggleNav();">
+		<i class="fa fa-bars fa-3x"></i>
+	</div>
+ </header>
 		
 		<!-- content -->	
 		<div class="container" style="margin-top: 65px">

@@ -16,9 +16,9 @@ if(isset($_POST['submit']))
 	$error = array();
 	
 	// check for a email
-	if(empty($_POST['Email']))
+	if(empty($_POST['UserName']))
 	{
-		$error['Email'] = 'Required field';
+		$error['UserName'] = 'Required field';
 	} 
 
 	
@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
 
 	
 	// check signin credentials
-	if(!empty($_POST['Email']) && !empty($_POST['Password']))	{
+	if(!empty($_POST['UserName']) && !empty($_POST['Password']))	{
 		// get user_id from the users table
 		$query = "SELECT 
 					user_id, 
@@ -39,7 +39,7 @@ if(isset($_POST['submit']))
 				FROM 
 					Login 
 				WHERE 
-					Email = '{$_POST['Email']}' AND Password = sha1('{$_POST['Password']}') 
+					UserName = '{$_POST['UserName']}' AND Password = sha1('{$_POST['Password']}') 
 				LIMIT 1";
 		$result = mysqli_query($dbc, $query);
 		$row = mysqli_fetch_assoc($result);
@@ -79,12 +79,11 @@ if(isset($_POST['submit']))
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
-	<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script> -->
-	 <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-		<link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
+	
+<link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../Bootstrap/css/font-awesome.min.css">
+<link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
 		<script type="text/javascript">
 		     
 			$(document).ready(function(e)

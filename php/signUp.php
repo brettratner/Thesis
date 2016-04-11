@@ -120,12 +120,11 @@ if(isset($_POST['submit']))
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
-	<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script> -->
-	 <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-		<link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
+	
+<link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../Bootstrap/css/font-awesome.min.css">
+<link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
 		
 		<script type="text/javascript">
 		     

@@ -8,6 +8,14 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 	// continue session
 	session_start();
 	
+	// check for a user_id
+	if(!$_SESSION['user_id'])
+	{
+		// redirect user to homepage if they are not signed in
+		header("Location: ../index.php");	
+	}
+
+
    ?>
 
 
@@ -25,12 +33,11 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
-	<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script> -->
-	 <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-		<link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
+	
+<link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../Bootstrap/css/font-awesome.min.css">
+<link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
 
 <script>
 		function toggleNav(){
@@ -74,10 +81,10 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		
 		</div>
 <div class="button1">
- <button class="btn btn-default" id="findLocation" type="button">Find Location</button>
+ <a href="findLocation.php"><button class="btn btn-default" id="findLocation" type="button">Find Location</button></a>
  </div>
  <div class="button2">
- <button class="btn btn-default" id="FavoritePlaces" type="button">Favorite Places</button>
+ <a href="favoritePlaces.php"><button class="btn btn-default" id="FavoritePlaces" type="button">Favorite Places</button></a>
  </div>
  <div class="button3">
  <button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button>

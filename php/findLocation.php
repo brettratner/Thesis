@@ -1,6 +1,6 @@
 <?php 
 // include configuration file
-include('config.php');
+include('../config.php');
 	
 // connect to the database
 $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Could not connect to MySQL: ' . mysqli_connect_error());
@@ -8,11 +8,15 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 	// continue session
 	session_start();
 	
+	// check for a user_id
+	if(!$_SESSION['user_id'])
+	{
+		// redirect user to homepage if they are not signed in
+		header("Location: ../index.php");	
+	}
+
+
    ?>
-
-
-
-
 <!DOCTYPE html>
 	<html>
     	<head>
@@ -26,12 +30,10 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
-	
-	 <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="Bootstrap/css/font-awesome.min.css">
-
-		<link href="css/mainStyle.css" type="text/css" rel="stylesheet">
+<link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../Bootstrap/css/font-awesome.min.css">
+<link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
 
 <script>
 		function toggleNav(){
@@ -44,19 +46,21 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 				}
 		}
 	</script>
-</head>
+    	</head>
 	<body>
 
 		<div id="letsgo">
-		<h1> <a href="index.php">Let's Go</a></h1>
+		<h1> <a href="letsgo.php">Let's Go</a></h1>
 		</div>
 <header>
  
 		 <div class="navigation">
 			<ul class="links">
 				
-				<li><a href="Settings.php">Settings</a></li>
-				<li><a href="feedback.php">Feedback</a></li>
+				<li><a href="../Settings.php">Settings</a></li>
+				<li><a href="../feedback.php">Feedback</a></li>
+				<li><a class="navbar-brand" href="signout.php">Sign out</a></li>
+
 			</ul>
 		</div>
  
@@ -65,23 +69,40 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 	</div>
  </header>
 
- <div class= "loginSignup">
-			<h4> 
-				<a href="php/signIn.php">Sign in</a> /
-			    <a href="php/signUp.php">Sign up</a>
-			</h4>
-		
-		</div>
-<div class="button1">
- <a href="php/findLocation.php"><button class="btn btn-default" id="findLocation" type="button">Find Location</button></a>
- </div>
- <div class="button2">
- <button class="btn btn-default" id="FavoritePlaces" type="button"><a href="php/favoritePlaces.php">Favorite Places</a></button>
- </div>
+
+<div class="table-responsive">
+  <table class="table" style="height:100%">
+<?php
+
+$result = mysqli_query($dbc,"SELECT * FROM LetsGo");
+
+echo "<table border='1' , width='100%' , height='100%'>
+<tr>
+<th>FirstName</th>
+<th>LastName</th>
+</tr>";
+
+ while($row = mysqli_fetch_array($result))
+ {
+ echo "<tr>";
+  echo "<td>" . $row['Green'] . "</td>";
+  echo "<td>" . $row['LocationName'] . "</td>";
+
+  echo "</tr>";
+ }
+echo "</table>";
+
+mysqli_close($dbc);
+?> 
+
+     </table> 
+  
+</div>
  <div class="button3">
- <button class="btn btn-default disabled" id="AddNewLocation" type="button"> Add New Location</button>
+ <button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button>
 </div>
 
 		
 	</body>
 	</html> 
+

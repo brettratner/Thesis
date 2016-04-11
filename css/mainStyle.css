@@ -7,7 +7,16 @@ li{
 	display:inline;
 	min-width: 40px;
 }
+  @font-face {
+    font-family: fairview;
+    src: url(../fonts/Fairview_Regular.otf);
+}
 
+
+#letsgo{
+	font-family: 'fairview';
+
+}
 #findLocation {
     left: auto;
     right: auto;

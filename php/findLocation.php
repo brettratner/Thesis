@@ -75,23 +75,28 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 <?php
 
 $result = mysqli_query($dbc,"SELECT * FROM LetsGo");
-
+// $target = 'findLocation.php';
+$linkk = $_GET["LocationName"];
+ $link = "google";
 echo "<table border='1' , width='100%' , height='100%'>
 <tr>
-<th>FirstName</th>
-<th>LastName</th>
+<th>Color</th>
+<th>Location</th>
 </tr>";
 
  while($row = mysqli_fetch_array($result))
  {
+ 	
  echo "<tr>";
   echo "<td>" . $row['Green'] . "</td>";
   echo "<td>" . $row['LocationName'] . "</td>";
+  //.$row['LocationName'] ."</td>";
 
   echo "</tr>";
+  
  }
 echo "</table>";
-
+echo "<a href='http://www.google.com'>". $link ."</a>";
 mysqli_close($dbc);
 ?> 
 
@@ -99,7 +104,7 @@ mysqli_close($dbc);
   
 </div>
  <div class="button3">
- <button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button>
+ <a href="AddNewLocation.php"><button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button></a>
 </div>
 
 		

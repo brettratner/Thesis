@@ -61,7 +61,7 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		 <div class="navigation">
 			<ul class="links">
 				
-				<li><a href="../Settings.php">Settings</a></li>
+				<li><a href="settings.php">Settings</a></li>
 				<li><a href="../feedback.php">Feedback</a></li>
 				<li><a class="navbar-brand" href="signout.php">Sign out</a></li>
 
@@ -73,13 +73,6 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 	</div>
  </header>
 
- <div class= "loginSignup">
-			<h4> 
-				<a href="signIn.php">Sign in</a> /
-			    <a href="php/signUp.php">Sign up</a>
-			</h4>
-		
-		</div>
 <div class="button1">
  <a href="findLocation.php"><button class="btn btn-default" id="findLocation" type="button">Find Location</button></a>
  </div>

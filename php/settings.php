@@ -17,6 +17,9 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 
 
    ?>
+
+
+
 <!DOCTYPE html>
 	<html>
     	<head>
@@ -30,6 +33,7 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
+	
 <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="/../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="../Bootstrap/css/font-awesome.min.css">
@@ -57,8 +61,8 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		 <div class="navigation">
 			<ul class="links">
 				
-				<li><a href="../Settings.php">Settings</a></li>
-				<li><a href="../feedback.php">Feedback</a></li>
+				<li><a href="Settings.php">Settings</a></li>
+				<li><a href="feedback.php">Feedback</a></li>
 				<li><a class="navbar-brand" href="signout.php">Sign out</a></li>
 
 			</ul>
@@ -69,43 +73,31 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 	</div>
  </header>
 
-
-<div class="table-responsive">
-  
-<?php
-
-$result = mysqli_query($dbc,"SELECT * FROM LetsGo");
-
-echo "<table border='1' , width='100%' , height='100%'>
-<tr>
-<th>Color</th>
-<th>Location</th>
-</tr>";
-
- while($row = mysqli_fetch_array($result))
- {
- 	
- echo "<tr>";
-  echo "<td>" . $row['Green'] . "</td>";
-  echo "<td><a href='details.php?id=". $row['id'] ."'>" . $row['LocationName'] . "</a></td>";
-
-  echo "</tr>";
-  
- }
-echo "</table>";
-
-mysqli_close($dbc);
-?> 
-
-  
-  
+<input id="demo_vertical2" type="number" value="" name="demo_vertical2">
+<div class="container">
+  <div class="page-header">
+    <h1>Settings</h1></div>
+  <div class="input-group spinner">
+    <input type="text" class="form-control" value="1">
+    <div class="input-group-btn-vertical">
+      <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+      <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+    </div>
+  </div>
 </div>
 
- <div class="button3">
- <a href="AddNewLocation.php"><button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button></a>
-</div>
 
+<script src="/javascripts/application.js" type="text/javascript">
+	(function ($) {
+  $('.spinner .btn:first-of-type').on('click', function() {
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
+  });
+  $('.spinner .btn:last-of-type').on('click', function() {
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
+  });
+})(jQuery);
+	
+</script>
 		
 	</body>
 	</html> 
-

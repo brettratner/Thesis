@@ -70,39 +70,8 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
  </header>
 
 
-<div class="table-responsive">
-  
-<?php
-
-$result = mysqli_query($dbc,"SELECT * FROM LetsGo");
-
-echo "<table border='1' , width='100%' , height='100%'>
-<tr>
-<th>Color</th>
-<th>Location</th>
-</tr>";
-
- while($row = mysqli_fetch_array($result))
- {
- 	
- echo "<tr>";
-  echo "<td>" . $row['Green'] . "</td>";
-  echo "<td><a href='details.php?id=". $row['id'] ."'>" . $row['LocationName'] . "</a></td>";
-
-  echo "</tr>";
-  
- }
-echo "</table>";
-
-mysqli_close($dbc);
-?> 
-
-  
-  
-</div>
-
  <div class="button3">
- <a href="AddNewLocation.php"><button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button></a>
+ <a href="findLocation.php"><button class="btn btn-default" id="AddNewLocation" type="button"> Go Back</button></a>
 </div>
 
 		

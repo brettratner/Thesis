@@ -1,9 +1,9 @@
 <?php
 
 // Set the database access information
- 
-		$db_user = 'ENTER DATA-BASE USER HERE';
-		$db_password = 'ENTER PASSWORD HERE';
+
+		$db_user = '***REMOVED***';
+		$db_password = '***REMOVED***';
 		$db_host = 'localhost';
-		$db_name = 'ENTER DATA-BASE HERE';
+		$db_name = '***REMOVED***';
 ?>

@@ -25,13 +25,13 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
         <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		
+		<script type="text/javascript" src="../js/snap.svg.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
 <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="/../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/../Bootstrap/js/bootstrap.js" type="text/javascript"></script>
 <link rel="stylesheet" href="../Bootstrap/css/font-awesome.min.css">
 <link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
 
@@ -69,12 +69,26 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 	</div>
  </header>
 
+<div class="locationTitle">
+	<?php
 
+	$sql = "SELECT * FROM `LetsGo` WHERE id = '{$_GET['id']}' LIMIT 1";
+	$result = mysqli_query($dbc, $sql);
+	$row = mysqli_fetch_assoc($result);
+	echo "<h1>{$row['LocationName']} </h1>";
+	mysqli_close($dbc);
+	?>
+</div>
+ <div id="div1">
+      <svg id="cvs" width="100%" height="400"></svg>
+    </div>
  <div class="button3">
  <a href="findLocation.php"><button class="btn btn-default" id="AddNewLocation" type="button"> Go Back</button></a>
 </div>
 
 		
 	</body>
+	<script type="text/javascript" src="../js/LocationUpdating.js"></script>
+
 	</html> 
 

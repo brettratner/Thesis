@@ -1,5 +1,6 @@
 body {
-background: skyblue;
+background: powderblue;
+overflow-x: hidden;
 
 }
 li{
@@ -75,6 +76,19 @@ li{
     position: relative;
 }
 
+ #div1 { 
+    margin: auto;
+    position: relative;
+    font-size: 21px;
+    width:100%;
+      }
+#cvs{
+  margin: auto;
+  position: relative;
+  width: 400px;
+  display: block;
+
+}
 .navbar, .navbar-inverse {
     border-radius: 0;
     border: none;

@@ -25,7 +25,6 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
         <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
@@ -53,7 +52,7 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		<h1> <a href="letsgo.php">Let's Go</a></h1>
 		</div>
 <header>
- 
+
 		 <div class="navigation">
 			<ul class="links">
 				
@@ -101,11 +100,32 @@ mysqli_close($dbc);
   
 </div>
 
+<script>
+ function updateShouts(){
+    // Assuming we have #shoutbox
+    //$('#shoutbox').load('findLocation.php');
+    <?php
+
+        $result = "UPDATE LetsGo 
+        				SET  'Green'  = 0,
+        				SET  'Yellow' = 0,
+        				SET  'Red'    = 0";
+
+         // echo $dbc;
+         // mysql_query($dbc);
+    	?>  
+    	location.reload();    
+
+}
+setInterval( "updateShouts()", 10000 );
+</script>
+
  <div class="button3">
  <a href="AddNewLocation.php"><button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button></a>
 </div>
 
 		
 	</body>
+
 	</html> 
 

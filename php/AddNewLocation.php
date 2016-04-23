@@ -37,33 +37,15 @@ if(isset($_POST['submit']))
 		$error['XLocation'] = 'Required field';
 	} 
 
-	// check for a XLocation
+	// check for a YLocation
 	if(empty($_POST['YLocation']))
 	{
 		$error['YLocation'] = 'Required field';
 	} 
 	
 
-	// check for green value
-		if(empty($_POST['Green']))
-		{
-			$error['Green'] = 'Required field';
-		} 
-
-	// check for yellow value
-		if(empty($_POST['Yellow']))
-		{
-			$error['Yellow'] = 'Required field';
-		} 
-
-	// check for Red value
-		if(empty($_POST['Red']))
-		{
-			$error['Red'] = 'Required field';
-		} 
-
 	
-	// check for a password
+	// check for a PictureFile
 	if(empty($_POST['PictureFile']))
 	{
 		$error['PictureFile'] = 'Required field';
@@ -74,13 +56,10 @@ if(isset($_POST['submit']))
 	{
 		// insert user into the users table
 		$query = "INSERT INTO LetsGo (
-					user_id, 
+					id, 
 					LocationName, 
 					XLocation, 
 					YLocation,
-					Green,
-					Yellow,
-					Red,
 					PictureFile,
 					timeEntered
 				) VALUES (
@@ -88,16 +67,13 @@ if(isset($_POST['submit']))
 					'{$_POST['LocationName']}',
 					'{$_POST['XLocation']}',
 					'{$_POST['YLocation']}',
-					'{$_POST['Gren']}',
-					'{$_POST['Yellow']}',
-					'{$_POST['Red']}',
 					'{$_POST['PictureFile']}',
 					NOW()
 					)";
 		$result = mysqli_query($dbc, $query);
 		
 		// obtain user_id from table
-		$iuser_id = mysqli_insert_id($dbc);
+		$id = mysqli_insert_id($dbc);
 		
 		
 		// redirect user to profile page
@@ -189,21 +165,7 @@ if(isset($_POST['submit']))
 					<input name="YLocation" type="text" value="<?php echo $_POST['YLocation']; ?>" autocomplete="off" class="form-control" />
 					<span class="text-error"><?php echo $error['YLocation']; ?></span>
 				</div>
-				<div class="form-group">
-					<label>Red</label>
-					<input name="Red" type="text" value="<?php echo $_POST['Red']; ?>" autocomplete="off" class="form-control" />
-					<span class="text-error"><?php echo $error['Red']; ?></span>
-				</div>
-				<div class="form-group">
-					<label>Green</label>
-					<input name="Green" type="text" value="<?php echo $_POST['Green']; ?>" autocomplete="off" class="form-control" />
-					<span class="text-error"><?php echo $error['Green']; ?></span>
-				</div>
-				<div class="form-group">
-					<label>Yellow</label>
-					<input name="Yellow" type="text" value="<?php echo $_POST['Yellow']; ?>" autocomplete="off" class="form-control" />
-					<span class="text-error"><?php echo $error['Yellow']; ?></span>
-				</div>
+				
 				<div class="form-group">
 					<label>Image of Place</label>
 					<input name="PictureFile" type="text" value="<?php echo $_POST['PictureFile']; ?>" autocomplete="off" class="form-control" />

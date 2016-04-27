@@ -89,6 +89,11 @@ li{
   display: block;
 
 }
+
+a.thelist {
+    font-size: 30px;
+}
+
 .navbar, .navbar-inverse {
     border-radius: 0;
     border: none;
@@ -119,6 +124,26 @@ li{
     height: 100%;
 }
 
+ul.links {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 28px;
+    display: inline-block;
+    left: auto;
+    right: auto;
+    position: relative;
+}
+ul.links:hover {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 28px;
+    display: inline-block;
+    left: auto;
+    right: auto;
+    position: relative;
+    text-decoration: none;
+
+}
 
 
 a {
@@ -246,7 +271,7 @@ header .navigation {
    		z-index: 9001;
    	}
 
-   	body{background-color:yellow}
+   	body{background-color:powderblue}
 
    	header .navigation {
    		float: none;

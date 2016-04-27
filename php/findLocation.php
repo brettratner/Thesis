@@ -25,13 +25,12 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
         <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
 <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="/../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="../Bootstrap/css/font-awesome.min.css">
+<script src="../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../Bootstrap/css/font-awesome.css">
 <link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
 
 <script>
@@ -56,9 +55,9 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		 <div class="navigation">
 			<ul class="links">
 				
-				<li><a href="../Settings.php">Settings</a></li>
+				<li><a href="Settings.php">Settings</a></li>
 				<li><a href="../feedback.php">Feedback</a></li>
-				<li><a class="navbar-brand" href="signout.php">Sign out</a></li>
+				<li><a href="signout.php">Sign out</a></li>
 
 			</ul>
 		</div>
@@ -69,7 +68,7 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
  </header>
 
 
-<div class="table-responsive">
+<div class="table-responsive" id=content>
   
 <?php
 
@@ -83,10 +82,23 @@ echo "<table border='1' , width='100%' , height='100%'>
 
  while($row = mysqli_fetch_array($result))
  {
- 	
+ 	$green = $row['Green'];
+	$red = $row['Red'];
+	$yellow = $row['Yellow'];
+
+	$max = max(array($green, $red, $yellow));
+
+	if ($max == $green) {
+		$status = 'green';
+	} else if ($max == $red) {
+		$status = 'red';
+	} else if ($max == $yellow) {
+		$status = 'yellow';
+	}
+
  echo "<tr>";
-  echo "<td>" . $row['Green'] . "</td>";
-  echo "<td><a href='details.php?id=". $row['id'] ."'>" . $row['LocationName'] . "</a></td>";
+  echo "<td bgcolor=" . $status . "></td>";
+  echo "<td><a class='thelist' href='details.php?id=". $row['id'] ."'>" . $row['LocationName'] . "</a></td>";
 
   echo "</tr>";
   
@@ -96,29 +108,21 @@ echo "</table>";
 mysqli_close($dbc);
 ?> 
 
+<script>
+	
+	  $.ajax({
+                method: "POST",
+                url: "updateTable.php?id=<?php echo $_GET['id']?>",
+                dataType: "json"
+            }).done(function( json ) {
+              $html
+            });  
+</script>
   
   
 </div>
 
-<script>
- function updateShouts(){
-    // Assuming we have #shoutbox
-    //$('#shoutbox').load('findLocation.php');
-    <?php
 
-        $result = "UPDATE LetsGo 
-        				SET  'Green'  = 0,
-        				SET  'Yellow' = 0,
-        				SET  'Red'    = 0";
-
-         // echo $dbc;
-         // mysql_query($dbc);
-    	?>  
-    	location.reload();    
-
-}
-setInterval( "updateShouts()", 10000 );
-</script>
 
  <div class="button3">
  <a href="AddNewLocation.php"><button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button></a>

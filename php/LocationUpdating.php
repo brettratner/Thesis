@@ -1,3 +1,4 @@
+<script>
 /**************************************************************************
 * Lab06
 * Brett Ratner
@@ -12,6 +13,9 @@ var x1 = 60;
 var x2 = 180;
 var x3 = 300;
 var y = 150;
+isGreenClicked = false;
+isYellowClicked = false;
+isRedClicked = false;
 /*****************************************************************************************************************/
     // Create the first circle on the left
     var el1 = cvs.ellipse(x1, y, 50, 50);
@@ -30,7 +34,24 @@ var y = 150;
     el1.click(
         function(e) {
             //update the green counter
-            "<?php   UPDATE * From LetsGo SET Green = Green + 1 WHERE Green >= 0 ?>";
+            if(isGreenClicked === false && isYellowClicked === false && isRedClicked === false){
+            $.ajax({
+                method: "POST",
+                url: "greenvote.php?id=<?php echo $_GET['id']?>",
+                dataType: "json"
+            }).done(function( json ) {
+              isGreenClicked = true;
+              window.location = "findLocation.php"
+            });            
+            
+            }
+            if(isGreenClicked === true){
+            setInterval(function() {
+            //allow user to click button once per ten minutes
+                        isGreenClicked = false;
+
+            }, 10000);
+          }
  
           }
       );
@@ -52,6 +73,23 @@ var y = 150;
     el2.click(
         function(e) {
           //update the yellow counter
+          if(isGreenClicked === false && isYellowClicked === false && isRedClicked === false){
+ $.ajax({
+                method: "POST",
+                url: "yellowvote.php?id=<?php echo $_GET['id']?>",
+                dataType: "json"
+            }).done(function( json ) {
+              window.location = "findLocation.php"
+            })                          
+            isYellowClicked = true;
+            }
+            if(isYellowClicked === true){
+            setInterval(function() {
+            //allow user to click button once per ten minutes
+                        isYellowClicked = false;
+
+            }, 10000);
+          }
         }
       );
 /*****************************************************************************************************************/
@@ -72,8 +110,26 @@ var y = 150;
 el3.click(
         function(e) {
             //update the red counter
+              if(isGreenClicked === false && isYellowClicked === false && isRedClicked === false){
+                $.ajax({
+                method: "POST",
+                url: "redvote.php?id=<?php echo $_GET['id']?>",
+                dataType: "json"
+            }).done(function( json ) {
+              window.location = "findLocation.php"
+            })                         
+             isRedClicked = true;
+            }
+            if(isRedClicked === true){
+            setInterval(function() {
+            //allow user to click button once per ten minutes
+                        isRedClicked = false;
+
+            }, 10000);
+          }
         }
       );
 
 })();
+</script>
   

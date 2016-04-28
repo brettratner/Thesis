@@ -1,6 +1,7 @@
 body {
-background: powderblue;
+background: #FFF8F0;
 overflow-x: hidden;
+
 
 }
 li{
@@ -28,7 +29,7 @@ li{
     font-size: 21px;
     text-align: center;
     height: 60px;
-    width: 210px;
+    width: 285px;
 
 }
 
@@ -49,7 +50,7 @@ li{
     display: block;
     font-size: 21px;
 	height: 60px;
-    width: 210px;
+    width: 285px;
 }
 
 .button2 {
@@ -64,10 +65,18 @@ li{
     display: block;
     font-size: 21px;
     height: 60px;
-    width: 210px;
+    width: 285px;
 }
 
+td, th {
+    padding-right: 15px;
+    padding-left: 15px;
+    overflow-x: wrap;
 
+}
+th{
+    text-align: left;
+}
 
 .loginSignup {
     margin-left: 80%;
@@ -92,8 +101,36 @@ li{
 
 a.thelist {
     font-size: 30px;
+    font-weight: 400;
 }
 
+.goback {
+    padding-bottom: 20px;
+    position: relative;
+    margin-bottom: 10%;
+}
+.button3 {
+    padding: 10px;
+}
+.detailcolor {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button, button, input[type="button"], input[type="reset"], input[type="submit"]{
+    background-color: #007FFF !important;
+    border: .1rem solid #007FFF !important;
+    border-radius: 2em;
+    color: #f6d8ae !important;
+}
+
+.locationTitle {
+
+    text-align: center;
+}
+.Title {
+    margin-bottom: -10px;
+}
 .navbar, .navbar-inverse {
     border-radius: 0;
     border: none;
@@ -147,8 +184,9 @@ ul.links:hover {
 
 
 a {
-	color: #333;
+	color: #003459;
 	text-decoration: none;
+
 }
 
 a:hover,
@@ -197,21 +235,6 @@ a:focus {
 
 
 
-
-/**
- * 6.1 Links
- */
-
-a {
-	color: #333;
-	text-decoration: none;
-}
-
-a:hover,
-a:focus {
-	color: #707070;
-	color: rgba(51, 51, 51, 0.7);
-}
 
 
 
@@ -271,7 +294,7 @@ header .navigation {
    		z-index: 9001;
    	}
 
-   	body{background-color:powderblue}
+   	body{background-color:#FFF8F0}
 
    	header .navigation {
    		float: none;

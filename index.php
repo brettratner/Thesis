@@ -25,8 +25,8 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 			<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
-	
-	 <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+			<link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	 <script src="Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	 <link rel="stylesheet" href="../Bootstrap/css/font-awesome.css">
 	 <link href="css/mainStyle.css" type="text/css" rel="stylesheet">

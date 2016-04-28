@@ -28,7 +28,7 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
-<link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+			<link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="../Bootstrap/css/font-awesome.css">
 <link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
@@ -66,6 +66,9 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		<i class="fa fa-bars fa-3x"></i>
 	</div>
  </header>
+		<div class="button3">
+			<a href="AddNewLocation.php"><button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button></a>
+		</div>
 
 
 <div class="table-responsive" id=content>
@@ -101,25 +104,15 @@ echo "<table border='1' , width='100%' , height='100%'>
   echo "<td><a class='thelist' href='details.php?id=". $row['id'] ."'>" . $row['LocationName'] . "</a></td>";
 
   echo "</tr>";
-  
+
  }
 echo "</table>";
 
 mysqli_close($dbc);
 ?> 
 
-<script>
-	
-	  $.ajax({
-                method: "POST",
-                url: "updateTable.php?id=<?php echo $_GET['id']?>",
-                dataType: "json"
-            }).done(function( json ) {
-              $html
-            });  
-</script>
-  
-  
+
+
 </div>
 
 

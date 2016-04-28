@@ -40,25 +40,26 @@ if (isset($_POST['submit'])) {
     // if there are no errors
     if (sizeof($error) == 0) {
 
+        $locName = mysqli_real_escape_string($dbc, $_POST['LocationName']);
+        $address = mysqli_real_escape_string($dbc, $_POST['Address']);
+
         // insert info into the letsgo table
         $query = "INSERT INTO LetsGo (
 					id, 
 					LocationName, 
 					Address, 
-					image,
 					timeEntered
 				) VALUES (
 					null,
-					'{$_POST['LocationName']}',
-					'{$_POST['Address']}',
-					'{$_POST['image']}',
+					'{$locName}',
+					'{$address}',
 					NOW()
 					)";
 
 
         $result = mysqli_query($dbc, $query);
 
-        $sql = "SELECT `id` FROM `LetsGo` WHERE `Address`='{$_POST['Address']}' AND `LocationName`='{$_POST['LocationName']}'";
+        $sql = "SELECT `id` FROM `LetsGo` WHERE `Address`='{$address}' AND `LocationName`='{$locName}'";
         $result = mysqli_query($dbc, $sql);
         $row = mysqli_fetch_assoc($result);
         $id = $row['id'];
@@ -141,7 +142,7 @@ if (isset($_POST['submit'])) {
 <!-- content -->
 <div class="container" style="margin-top: 65px">
 
-    <h2>Sign up</h2>
+    <h2>Add New Location</h2>
 
     <!-- signup form -->
     <form method="post" action="AddNewLocation.php" enctype="multipart/form-data">

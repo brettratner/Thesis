@@ -67,10 +67,11 @@ if (!$_SESSION['user_id']) {
     </div>
 </header>
 
-<div class="locationTitle">
-    <?php
 
-    $sql = "SELECT * FROM `LetsGo` WHERE id = '{$_GET['id']}' LIMIT 1";
+    <?php
+    $id = mysqli_real_escape_string($dbc, $_GET['id']);
+
+    $sql = "SELECT * FROM `LetsGo` WHERE id = '{$id}' LIMIT 1";
     $result = mysqli_query($dbc, $sql);
     $row = mysqli_fetch_assoc($result);
 
@@ -81,25 +82,53 @@ if (!$_SESSION['user_id']) {
     $max = max(array($green, $red, $yellow));
 
     if ($max == $green) {
-        echo 'Green';
+        $status = 'green';
     } else if ($max == $red) {
-        echo 'Red';
+        $status = 'red';
     } else if ($max == $yellow) {
-        echo 'Yellow';
+        $status = 'yellow';
     }
+echo "<table  class= 'detailcolor' border='1' , width='75%%' , height='75px'>";
+ echo "<tr>";
+  echo "<td bgcolor=" . $status . "></td>";
+   echo "</tr>";
 
-    echo "<h1>{$row['LocationName']} </h1>";
 
-    echo '<img src="../imgs/' . $row['id'] . '.jpg" alt="Image Not Found" style="width:100%;height:100%">';
-
+echo "</table>";
+echo "<div class='locationTitle'>";
+    echo "<h1 class='Title'>{$row['LocationName']} </h1>";
+    echo "<h3>{$row['Address']} </h3>";
+    echo '<img src="../imgs/' . $row['id'] . '.jpg" alt="Image Not Found" style="max-width:400px;max-height:600px;">';
+    echo "</div>";
     mysqli_close($dbc);
 
     ?>
 </div>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+</script>
 <div id="div1">
     <svg id="cvs" width="100%" height="400"></svg>
 </div>
-<div class="button3">
+<div class="goback">
     <a href="findLocation.php">
         <button class="btn btn-default" id="AddNewLocation" type="button"> Go Back</button>
     </a>

@@ -1,15 +1,3 @@
-<?php 
-// include configuration file
-include('config.php');
-	
-// connect to the database
-$dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Could not connect to MySQL: ' . mysqli_connect_error());
-	
-	// continue session
-	session_start();
-	
-   ?>
-
 
 
 
@@ -25,10 +13,10 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 			<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
-
+			<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 			<link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	 <script src="Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	 <link rel="stylesheet" href="../Bootstrap/css/font-awesome.css">
+	 <link rel="stylesheet" href="Bootstrap/css/font-awesome.css">
 	 <link href="css/mainStyle.css" type="text/css" rel="stylesheet">
 
 <script>
@@ -45,23 +33,22 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 </head>
 	<body>
 
+	<header>
 		<div id="letsgo">
-		<h1> <a href="index.php">Let's Go</a></h1>
+			<h1><a href="letsgo.php">Let's Go</a></h1>
 		</div>
-<header>
- 
-		 <div class="navigation">
+		<div class="navigation">
 			<ul class="links">
-				
-				<li><a href="php/settings.php">Settings</a></li>
-				<li><a href="feedback.php">Feedback</a></li>
+				<div class="notsignedin">
+				<li><a href="php/about.php">About</a></li>
+				</div>
 			</ul>
 		</div>
- 
- <div id="toggle" onclick="toggleNav();">
-		<i class="fa fa-bars fa-3x"></i>
-	</div>
- </header>
+
+		<div id="toggle" onclick="toggleNav();">
+			<i class="fa fa-bars fa-3x"></i>
+		</div>
+	</header>
 
  <div class= "loginSignup">
 			<h4> 
@@ -71,10 +58,10 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		
 		</div>
 <div class="button1">
- <a href="php/findLocation.php"><button class="btn btn-default disabled " id="findLocation" type="button">Find Location</button></a>
+ <button class="btn btn-default disabled " id="findLocation" type="button">Find Location</button>
  </div>
  <div class="button2">
- <button class="btn btn-default disabled " id="FavoritePlaces" type="button"><a href="php/favoritePlaces.php">Favorite Places</a></button>
+ <button class="btn btn-default disabled " id="FavoritePlaces" type="button">Favorite Places</button>
  </div>
  <div class="button3">
  <button class="btn btn-default disabled" id="AddNewLocation" type="button"> Add New Location</button>

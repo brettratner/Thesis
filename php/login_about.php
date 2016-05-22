@@ -13,24 +13,23 @@ if (!$_SESSION['user_id']) {
     // redirect user to homepage if they are not signed in
     header("Location: ../index.php");
 }
-
-
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-
     <title>Let's Go</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script type="text/javascript" src="../js/snap.svg.js"></script>
+
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"
             integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
             crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="../Bootstrap/js/bootstrap.min.js"></script>
+    <script src="../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../Bootstrap/css/font-awesome.css">
     <link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
 
@@ -48,6 +47,8 @@ if (!$_SESSION['user_id']) {
 </head>
 <body>
 
+<!-- top navigation -->
+<!-- <?php include('topnavigation.php'); ?> -->
 
 <header>
     <div id="letsgo">
@@ -69,58 +70,47 @@ if (!$_SESSION['user_id']) {
     </div>
 </header>
 
+<!-- content -->
+<div class="container" style="margin-top: 65px">
 
-    <?php
-    $id = mysqli_real_escape_string($dbc, $_GET['id']);
+    <div class="aboutTitle">
+        <img src="../imgs/Brett.png" alt="Brett Ratner" style="width:350px;height:350px">
 
-    $sql = "SELECT * FROM `LetsGo` WHERE id = '{$id}' LIMIT 1";
-    $result = mysqli_query($dbc, $sql);
-    $row = mysqli_fetch_assoc($result);
+        <h2>About the Developer</h2>
+    </div>
 
-    $green = $row['Green'];
-    $red = $row['Red'];
-    $yellow = $row['Yellow'];
+    <div class="aboutMe">
+      <p>
+          My name is Brett Ratner, I am a senior majoring in Interactive Multimedia with a minor
+          in Computer Science. To create my senior thesis, I used my knowledge in java and swift
+          to create my senior thesis as a mobile app. Complications arose which inspired me to
+          turn the project into a website using my skills in HTML, JavaScript, CSS, and PHP, and
+          MYSQL. After graduation my plans are to enter a career as a software engineer, or a
+          full stack web developer.
+      </p>
+    </div>
 
-    $max = max(array($green, $red, $yellow));
-
-    if ($max == $green) {
-        $status = '#237529';
-    } else if ($max == $red) {
-        $status = '#d31518';
-    } else if ($max == $yellow) {
-        $status = '#eadd48';
-    }
-echo "<table  class= 'detailcolor' border='1' , width='75%%' , height='75px'>";
- echo "<tr>";
-  echo "<td bgcolor=" . $status . "></td>";
-   echo "</tr>";
-
-
-echo "</table>";
-echo "<div class='locationTitle'>";
-    echo "<h1 class='Title'>{$row['LocationName']} </h1>";
-    echo "<h3>{$row['Address']} </h3>";
-    echo '<img src="../imgs/' . $row['id'] . '.jpg" alt="Image Not Found" style="max-width:400px;max-height:600px;">';
-    echo "</div>";
-    mysqli_close($dbc);
-
-    ?>
+<div class="aboutTitle">
+    <h2>About Let's Go</h2>
 </div>
 
+    <div class="aboutThesis">
+        <p>
+            “Let’s Go” is a mobile application that allows people to update and view the waiting time of crowded
+            restaurants, movie theaters, supermarkets and many other locations people commonly go.
+            This app will enable you to make an educated prediction of how long a wait will be at your
+            destination before you leave the house. You now have the ability to decide if a crowded restaurant
+            is worth the wait, choose a quieter time or eat somewhere else altogether.  The very people using
+            the app are able to monitor and update the information to keep the data current and accurate. There
+            are many more new and excting features that might just change the way you plan you plan your day.
+            It’s a fast-paced world~use your time wisely!
+        </p>
+    </div>
 
-<div id="div1">
-    <svg id="cvs" width="100%" height="400"></svg>
-</div>
-<div class="goback">
-    <a href="findLocation.php">
-        <button class="btn btn-default" id="AddNewLocation" type="button"> Go Back</button>
-    </a>
+
+   
 </div>
 
 
 </body>
-<!-- <script type="text/javascript" src="../js/LocationUpdating.js"></script> -->
-<?php include 'LocationUpdating.php'; ?>
-
 </html>
-

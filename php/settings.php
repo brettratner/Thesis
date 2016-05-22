@@ -30,7 +30,7 @@ if (!$_SESSION['user_id']) {
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"
             integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
             crossorigin="anonymous"></script>
-
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../Bootstrap/css/font-awesome.css">
@@ -50,17 +50,17 @@ if (!$_SESSION['user_id']) {
 </head>
 <body>
 
-<div id="letsgo">
-    <h1><a href="letsgo.php">Let's Go</a></h1>
-</div>
 <header>
-
+    <div id="letsgo">
+        <h1><a href="letsgo.php">Let's Go</a></h1>
+    </div>
     <div class="navigation">
         <ul class="links">
 
             <li><a href="settings.php">Settings</a></li>
             <li><a href="feedback.php">Feedback</a></li>
-            <li><a class="navbar-brand" href="signout.php">Sign out</a></li>
+            <li><a href="login_about.php">About</a></li>
+            <li><a href="signout.php">Sign out</a></li>
 
         </ul>
     </div>

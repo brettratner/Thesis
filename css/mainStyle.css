@@ -2,11 +2,11 @@ body {
 background: #FFF8F0;
 overflow-x: hidden;
 
-
 }
 li{
-	margin: 100px,100px;
-	display:inline;
+    float:left;
+    margin: 20px 10px 10px 10px;
+    display:inline-block;
 	min-width: 40px;
 }
   @font-face {
@@ -15,9 +15,13 @@ li{
 }
 
 
-#letsgo{
-	font-family: 'fairview';
-
+#letsgo {
+    font-family: 'fairview';
+    float: left;
+    position: relative;
+    height: inherit;
+    width: inherit;
+    padding-left: 10px;
 }
 #findLocation {
     left: auto;
@@ -33,6 +37,20 @@ li{
 
 }
 
+
+#buttonSubmit{
+    left: auto;
+    right: auto;
+    margin-right:auto;
+    margin-left:auto;
+    position: relative;
+    display: block;
+    font-size: 21px;
+    text-align: center;
+    height: 60px;
+    width: 285px;
+    border-radius: 4px !important;
+}
 .button1 {
     padding-top: 50px;
 }
@@ -54,7 +72,7 @@ li{
 }
 
 .button2 {
-    padding: 50px 0px 50px 0px;
+    padding: 50px 0 25px 0;
 }
 #AddNewLocation {
     left: auto;
@@ -67,11 +85,55 @@ li{
     height: 60px;
     width: 285px;
 }
+#MySchedule{
+    left: auto;
+    right: auto;
+    margin-right:auto;
+    margin-left:auto;
+    position: relative;
+    display: block;
+    font-size: 21px;
+    height: 60px;
+    width: 285px;
+}
 
+.aboutTitle{
+    text-align: center;
+}
+
+.aboutMe{
+    font-family: 'Open+Sans', sans-serif;
+    font-size: 17px;
+
+}
+
+.aboutThesis{
+    font-family: 'Open+Sans', sans-serif;
+    font-size: 17px;
+}
+/************************************/
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+ol.example li.placeholder {
+    position: relative;
+    /** More li styles **/
+}
+ol.example li.placeholder:before {
+    position: absolute;
+    /** Define arrowhead **/
+}
+/*************************************/
 td, th {
     padding-right: 15px;
     padding-left: 15px;
-    overflow-x: wrap;
 
 }
 th{
@@ -112,6 +174,9 @@ a.thelist {
 .button3 {
     padding: 10px;
 }
+.button4 {
+    padding: 25px 0 50px 0;
+}
 .detailcolor {
     margin-left: auto;
     margin-right: auto;
@@ -121,7 +186,7 @@ a.thelist {
     background-color: #007FFF !important;
     border: .1rem solid #007FFF !important;
     border-radius: 2em;
-    color: #f6d8ae !important;
+    color: #FFF8F0 !important;
 }
 
 .locationTitle {
@@ -145,7 +210,7 @@ a.thelist {
 
 .navbar-inverse .navbar-nav > li > a {
     color: #ffffff;
-    font-family: Lato;
+    font-family: 'Open+Sans', sans-serif;
     font-size: 2em;
     position: relative;
     display: block;
@@ -290,9 +355,24 @@ header .navigation {
    @media (max-width: 820px) {
 	   header{
 		text-align: center;
-   		padding: 5% 10px;
    		z-index: 9001;
    	}
+
+       li{
+           float:left;
+           margin: 0px 10px 10px 10px;
+           display:inline-block;
+           width:100%;
+           min-width: 40px;
+       }
+
+
+       .notsignedin{
+           top: 60px;
+           position: relative;
+           left: -50px;
+
+       }
 
    	body{background-color:#FFF8F0}
 
@@ -305,17 +385,24 @@ header .navigation {
    	}
 
 	header.toggleNav .navigation{
-   		margin: auto;
+   		margin-left:0;
+        margin-right:0;
 		opacity: 1;
-		height: 100px;
+		height: 190px;
 		text-align: center;
-		padding: 20px;
    	}
 
 	header .links {
    		display: none !important;
-   	}
 
+   	}
+       @media (max-width: 820px) {
+           .links {
+               padding:0;
+               margin:0;
+               width: 100%;
+           }
+       }
 	header.toggleNav .links{
    		display: table-cell !important;
    	}

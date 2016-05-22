@@ -28,6 +28,7 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
 		<script src="https://code.jquery.com/jquery-2.2.2.min.js"
 			  	integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
 			  	crossorigin="anonymous"></script>
+
 			<link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="../Bootstrap/css/font-awesome.css">
@@ -47,25 +48,26 @@ $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Cou
     	</head>
 	<body>
 
-		<div id="letsgo">
-		<h1> <a href="letsgo.php">Let's Go</a></h1>
-		</div>
-<header>
 
-		 <div class="navigation">
+	<header>
+		<div id="letsgo">
+			<h1><a href="letsgo.php">Let's Go</a></h1>
+		</div>
+		<div class="navigation">
 			<ul class="links">
-				
-				<li><a href="Settings.php">Settings</a></li>
-				<li><a href="../feedback.php">Feedback</a></li>
+
+				<li><a href="settings.php">Settings</a></li>
+				<li><a href="feedback.php">Feedback</a></li>
+				<li><a href="login_about.php">About</a></li>
 				<li><a href="signout.php">Sign out</a></li>
 
 			</ul>
 		</div>
- 
- <div id="toggle" onclick="toggleNav();">
-		<i class="fa fa-bars fa-3x"></i>
-	</div>
- </header>
+
+		<div id="toggle" onclick="toggleNav();">
+			<i class="fa fa-bars fa-3x"></i>
+		</div>
+	</header>
 		<div class="button3">
 			<a href="AddNewLocation.php"><button class="btn btn-default" id="AddNewLocation" type="button"> Add New Location</button></a>
 		</div>
@@ -92,11 +94,11 @@ echo "<table border='1' , width='100%' , height='100%'>
 	$max = max(array($green, $red, $yellow));
 
 	if ($max == $green) {
-		$status = 'green';
+		$status = '#237529';
 	} else if ($max == $red) {
-		$status = 'red';
+		$status = '#d31518';
 	} else if ($max == $yellow) {
-		$status = 'yellow';
+		$status = '#eadd48';
 	}
 
  echo "<tr>";

@@ -116,28 +116,39 @@ if (isset($_POST['submit'])) {
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"
             integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
             crossorigin="anonymous"></script>
-
-    <link href="../milligram/dist/milligram.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../Bootstrap/css/font-awesome.css">
     <link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
-
+    <script>
+        function toggleNav() {
+            if (document.getElementsByTagName("header")[0].className == "toggleNav") {
+                document.getElementsByTagName("header")[0].className = "";
+                document.getElementById("toggle").innerHTML = '<i class="fa fa-bars fa-3x"></i>';
+            } else {
+                document.getElementsByTagName("header")[0].className = "toggleNav";
+                document.getElementById("toggle").innerHTML = '<i class="fa fa-times fa-3x"></i>';
+            }
+        }
+    </script>
 
 </head>
 <body>
 
 <!-- top navigation -->
 <!-- <?php include('topnavigation.php'); ?> -->
-<div id="letsgo">
-    <h1><a href="../index.php">Let's Go</a></h1>
-</div>
 <header>
-
+    <div id="letsgo">
+        <h1><a href="letsgo.php">Let's Go</a></h1>
+    </div>
     <div class="navigation">
         <ul class="links">
 
-            <li><a href="settings.php">Settings</a></li>
-            <li><a href="feedback.php">Feedback</a></li>
+            <div class="notsignedin">
+                <li><a href="about.php">About</a></li>
+            </div>
+
         </ul>
     </div>
 
@@ -145,7 +156,6 @@ if (isset($_POST['submit'])) {
         <i class="fa fa-bars fa-3x"></i>
     </div>
 </header>
-
 <!-- content -->
 <div class="container" style="margin-top: 65px">
 

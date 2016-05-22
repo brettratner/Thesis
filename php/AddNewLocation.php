@@ -108,29 +108,41 @@ if (isset($_POST['submit'])) {
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"
             integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
             crossorigin="anonymous"></script>
-
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="../Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../Bootstrap/css/font-awesome.css">
     <link href="../css/mainStyle.css" type="text/css" rel="stylesheet">
 
-
+    <script>
+        function toggleNav() {
+            if (document.getElementsByTagName("header")[0].className == "toggleNav") {
+                document.getElementsByTagName("header")[0].className = "";
+                document.getElementById("toggle").innerHTML = '<i class="fa fa-bars fa-3x"></i>';
+            } else {
+                document.getElementsByTagName("header")[0].className = "toggleNav";
+                document.getElementById("toggle").innerHTML = '<i class="fa fa-times fa-3x"></i>';
+            }
+        }
+    </script>
 </head>
 <body>
 
 <!-- top navigation -->
 <!-- <?php include('topnavigation.php'); ?> -->
-<div id="letsgo">
-    <h1><a href="../index.php">Let's Go</a></h1>
-</div>
-<header>
 
+<header>
+    <div id="letsgo">
+        <h1><a href="letsgo.php">Let's Go</a></h1>
+    </div>
     <div class="navigation">
         <ul class="links">
-            <div class="topnav">
-                <li><a href="Settings.php">Settings</a></li>
-                <li><a href="feedback.php">Feedback</a></li>
-            </div>
+
+            <li><a href="settings.php">Settings</a></li>
+            <li><a href="feedback.php">Feedback</a></li>
+            <li><a href="login_about.php">About</a></li>
+            <li><a href="signout.php">Sign out</a></li>
+
         </ul>
     </div>
 
@@ -173,7 +185,7 @@ if (isset($_POST['submit'])) {
 
         <!-- submit button -->
         <div class="form-group">
-            <input name="submit" type="submit" value="AddNew Location" class="btn btn-large btn-primary"/>
+            <input name="submit" type="submit" value="Add New Location" class="btn btn-large btn-primary"/>
         </div>
 
     </form>
